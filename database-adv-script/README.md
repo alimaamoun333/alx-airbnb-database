@@ -26,4 +26,17 @@ This script demonstrates:
 ## Files
 
 - `subqueries.sql`: SQL queries with comments.
+# Airbnb Clone - Aggregations and Window Functions
+
+This script demonstrates:
+
+1. Aggregation query:
+   - Counts total bookings per user using COUNT() and GROUP BY.
+2. Window function query:
+   - Ranks properties by total bookings using RANK() OVER().
+
+## Files
+
+- `aggregations_and_window_functions.sql`: Contains both queries with comments.
+
 

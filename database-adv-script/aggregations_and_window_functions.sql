@@ -18,13 +18,13 @@ GROUP BY
 ORDER BY
     total_bookings DESC;
 
--- 2️⃣ Window Function: Rank properties by total number of bookings using ROW_NUMBER()
+-- 2️⃣ Window Function: Rank properties by total number of bookings using RANK()
 
 SELECT
     p.property_id,
     p.name AS property_name,
     COUNT(b.booking_id) AS total_bookings,
-    ROW_NUMBER() OVER (ORDER BY COUNT(b.booking_id) DESC) AS booking_rank
+    RANK() OVER (ORDER BY COUNT(b.booking_id) DESC) AS booking_rank
 FROM
     Property p
 LEFT JOIN

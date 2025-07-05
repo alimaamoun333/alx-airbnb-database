@@ -31,6 +31,7 @@ LEFT JOIN
 ON
     p.property_id = r.property_id;
 
+
 -- 3️⃣ FULL OUTER JOIN: Retrieve all users and all bookings, even if the user has no booking or a booking is not linked to a user
 -- ⚠️ Note: FULL OUTER JOIN may not be supported in MySQL. If you are using MySQL, use UNION of LEFT and RIGHT JOINs.
 -- Example for PostgreSQL:

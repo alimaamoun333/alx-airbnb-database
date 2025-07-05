@@ -14,7 +14,9 @@ FROM
 INNER JOIN
     User u
 ON
-    b.user_id = u.user_id;
+    b.user_id = u.user_id
+ORDER BY
+    b.booking_id;
 
 -- 2️⃣ LEFT JOIN: Retrieve all properties and their reviews, including properties with no reviews
 SELECT
@@ -29,12 +31,13 @@ FROM
 LEFT JOIN
     Review r
 ON
-    p.property_id = r.property_id;
-
+    p.property_id = r.property_id
+ORDER BY
+    p.property_id, r.review_id;
 
 -- 3️⃣ FULL OUTER JOIN: Retrieve all users and all bookings, even if the user has no booking or a booking is not linked to a user
--- ⚠️ Note: FULL OUTER JOIN may not be supported in MySQL. If you are using MySQL, use UNION of LEFT and RIGHT JOINs.
--- Example for PostgreSQL:
+
+-- If using PostgreSQL:
 SELECT
     u.user_id,
     u.first_name,
@@ -48,13 +51,41 @@ FROM
 FULL OUTER JOIN
     Booking b
 ON
-    u.user_id = b.user_id;
+    u.user_id = b.user_id
+ORDER BY
+    u.user_id, b.booking_id;
 
--- If using MySQL, use this alternative:
--- SELECT u.user_id, u.first_name, u.last_name, b.booking_id, b.property_id, b.start_date, b.end_date
--- FROM User u
--- LEFT JOIN Booking b ON u.user_id = b.user_id
+-- If using MySQL (alternative to FULL OUTER JOIN):
+-- Uncomment the following if your DBMS does not support FULL OUTER JOIN:
+
+-- SELECT
+--     u.user_id,
+--     u.first_name,
+--     u.last_name,
+--     b.booking_id,
+--     b.property_id,
+--     b.start_date,
+--     b.end_date
+-- FROM
+--     User u
+-- LEFT JOIN
+--     Booking b
+-- ON
+--     u.user_id = b.user_id
 -- UNION
--- SELECT u.user_id, u.first_name, u.last_name, b.booking_id, b.property_id, b.start_date, b.end_date
--- FROM User u
--- RIGHT JOIN Booking b ON u.user_id = b.user_id;
+-- SELECT
+--     u.user_id,
+--     u.first_name,
+--     u.last_name,
+--     b.booking_id,
+--     b.property_id,
+--     b.start_date,
+--     b.end_date
+-- FROM
+--     User u
+-- RIGHT JOIN
+--     Booking b
+-- ON
+--     u.user_id = b.user_id
+-- ORDER BY
+--     user_id, booking_id;

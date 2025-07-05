@@ -1,4 +1,4 @@
--- Initial Query: Retrieve bookings with all related details
+-- Initial Query: Retrieve bookings with all related details and filtering
 
 SELECT
     b.booking_id,
@@ -24,7 +24,10 @@ JOIN
 JOIN
     Property p ON b.property_id = p.property_id
 LEFT JOIN
-    Payment pay ON b.booking_id = pay.booking_id;
+    Payment pay ON b.booking_id = pay.booking_id
+WHERE
+    b.status = 'confirmed'
+    AND p.location = 'New York';
 
 -- Analyze the performance
 EXPLAIN ANALYZE
@@ -52,4 +55,7 @@ JOIN
 JOIN
     Property p ON b.property_id = p.property_id
 LEFT JOIN
-    Payment pay ON b.booking_id = pay.booking_id;
+    Payment pay ON b.booking_id = pay.booking_id
+WHERE
+    b.status = 'confirmed'
+    AND p.location = 'New York';

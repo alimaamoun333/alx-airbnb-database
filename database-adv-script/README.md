@@ -16,3 +16,14 @@ This directory contains SQL scripts demonstrating advanced join operations.
 ## File List
 
 - `joins_queries.sql`: SQL queries for inner, left, and full outer joins.
+# Airbnb Clone - Advanced SQL Subqueries
+
+This script demonstrates:
+
+1. Non-correlated subquery: Find properties with an average rating above 4.0.
+2. Correlated subquery: Find users with more than 3 bookings.
+
+## Files
+
+- `subqueries.sql`: SQL queries with comments.
+
